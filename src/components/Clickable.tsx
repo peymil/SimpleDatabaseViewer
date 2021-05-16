@@ -5,17 +5,17 @@ interface ButtonProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
+  id?: string;
 }
 
-const Button = ({ children, style, onClick, className }: ButtonProps) => {
+const Button = ({ children, style, onClick, className, id }: ButtonProps) => {
   return (
     <button
       type="button"
       onClick={onClick}
       className={className}
+      id={id}
       style={{
-        width: '100%',
-        height: '10%',
         ...style,
       }}
     >

@@ -6,8 +6,4 @@ class Postgresql {
   constructor(port: string) {
     this.port = port;
   }
-
-  //   private connectToDb() {
-
-  //   }
 }

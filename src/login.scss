@@ -1,0 +1,122 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+.loginContainer {
+  height: 100%;
+}
+.loginRoot {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+  flex: 3;
+  // padding-bottom: 50%;
+}
+.loginForm > input {
+  flex: 3;
+}
+.loginButton {
+  flex: 1;
+}
+
+button {
+  background: none;
+  border: 0;
+  color: inherit;
+  /* cursor: default; */
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-appearance: button; /* for input */
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.DbSelectButton {
+  justify-content: start;
+}
+.adressBarContainer {
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+#dbIcon {
+}
+#searchIcon {
+  margin-right: 5px;
+}
+.adressBar {
+  position: relative;
+  display: flex;
+  padding: 5px;
+  border-radius: 20px;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+}
+.adressBar > input {
+  display: inline-block;
+  margin-left: 5px;
+  flex: 1;
+}
+input {
+  border-width: 0;
+  border-color: white;
+  padding: 0;
+}
+.DbSelectDropdownItems:hover {
+  background-color: yellow;
+}
+input:focus {
+  border-width: 0;
+  border-color: white;
+  padding: 0;
+  outline: 0;
+}
+.DbSelectDropdown {
+  position: absolute;
+  border-width: 0.2px;
+  border-color: #a8a8a8;
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  padding: 5px;
+  justify-content: start;
+  z-index: 4;
+  background-color: whitesmoke;
+  align-items: flex-start;
+}
+.DbSelectDropdownItems {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+.DbSelectItemName {
+}
+#OutsideClick {
+  position: fixed;
+  cursor: default;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+.DbSelectItemImage {
+  margin-right: 10px;
+}
+.fullscreenButton {
+  position: absolute;
+}
