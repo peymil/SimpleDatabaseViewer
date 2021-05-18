@@ -39,6 +39,9 @@ button {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+button:hover {
+  background-color: #f8f8f8;
+}
 input::-moz-focus-inner,
 button::-moz-focus-inner {
   border: 0;
@@ -76,7 +79,7 @@ input {
   padding: 0;
 }
 .DbSelectDropdownItems:hover {
-  background-color: yellow;
+  background-color: white;
 }
 input:focus {
   border-width: 0;
@@ -119,4 +122,26 @@ input:focus {
 }
 .fullscreenButton {
   position: absolute;
+}
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  border-width: 0px;
+  border-right-width: 0.2px;
+  border-style: solid;
+}
+.sidebarClickable {
+  padding: 15px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+.sidebarClickableActive {
+  background-color: #f8f8f8;
+}
+.navigatorContainer {
+  display: flex;
+}
+.databaseContent {
+  flex: 1;
 }
