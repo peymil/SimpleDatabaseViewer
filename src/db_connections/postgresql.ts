@@ -1,7 +1,7 @@
 import Pool from 'pg-pool';
 import { Client, PoolClient } from 'pg';
 
-class postgres {
+class Postgres {
   currentTable = '';
 
   user: string;
@@ -12,22 +12,19 @@ class postgres {
 
   port: number;
 
-  private fieldsToFetch = '*';
-
   client: (Client & PoolClient) | undefined;
-
   // get fieldsToFetch() {
   //   return this._fieldsToFetch
   // }
 
   constructor(user: string, password: string, host: string, port: number) {
     this.user = user;
-    this.password = password;
+    this.password = password; // that is unsecure. Change that later
     this.host = host;
     this.port = port;
   }
 
-  initDb = () => {
+  initDb = async () => {
     const { host, user, password, port } = this;
     const client = await new Pool({
       host,
@@ -49,25 +46,48 @@ class postgres {
     return result;
   };
 
-  fetchAllFieldsLazily = (client: Client) => {
-    client.query('UPDATE ${this.currentTable} set $ ');
-    return;
+  fetchAllFieldsLazily = async (client: Client, fieldsToFetch?: string[]) => {
+    const joinedFieldsToFetch = fieldsToFetch ? fieldsToFetch.join() : '*';
+    const result = client.query(
+      `SELECT ${joinedFieldsToFetch} FROM ${this.currentTable}`
+    );
+    return result;
   };
 
-  *fetchFieldsLazily(client: Client,query: Query fieldsToFetch?: string[]) {
+  async fetchFieldsLazily(
+    client: Client,
+    filter: { [key: string]: string },
+    range: string,
+    fieldsToFetch?: string[]
+  ) {
+    const [min, max] = range.split('-');
     const joinedFieldsToFetch = fieldsToFetch ? fieldsToFetch.join() : '*';
-    client.query(``);
-    return;
+    const strFilters = Object.entries(filter)
+      .map((key, value) => `${key}=${value}`)
+      .join();
+    const result = await client.query(
+      `SELECT ${joinedFieldsToFetch} FROM ${this.currentTable} where ${strFilters} limit ${min},${max}`
+    );
+    return result;
   }
 
-  editField = (
+  editField = async (
     client: Client,
     fieldName: string,
     newValue: string,
     fieldId: string
   ) => {
-    client.query(
+    const result = client.query(
       `update dummy_table set ${fieldName}=${newValue} where id=${fieldId}`
     );
+    return result;
   };
 }
+export default Postgres;
+// interface Db<> {
+//   initDb: () => Promise<{}>;
+//   selectTable: () => Promise<{}>;
+//   fetchTables: () => Promise<{}>;
+//   fetchAllFieldsLazily: () => Promise<{}>;
+//   editField: () => Promise<{}>;
+// }
