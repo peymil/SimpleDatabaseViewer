@@ -188,6 +188,7 @@
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
+    "@types/react-table": "^7.7.1",
     "@types/react-test-renderer": "^16.9.3",
     "@types/webpack-env": "^1.15.2",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
@@ -266,6 +267,7 @@
     "react-i18next": "^11.8.15",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
+    "react-table": "^7.7.0",
     "regenerator-runtime": "^0.13.5",
     "source-map-support": "^0.5.19"
   },
